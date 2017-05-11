@@ -14,7 +14,7 @@ services:
       context: .
     image: app
     volumes:
-      - ./app:/app
+      - ./:/app
       - ./var/tmp:/tmp #used by Flow for caching
     links:
       - postgres

@@ -7,8 +7,8 @@ services:
       POSTGRES_PASSWORD: postgres
   app:
     ports:
-      - 9000:9000
-    command: bash -c "yarn devel:docker-up"
+      - 8000:8000
+    command: bash -c "yarn docker:dev:start"
     environment:
       - NODE_ENV=development
       - SSH_AUTH_SOCK=/tmp/ssh-agent
