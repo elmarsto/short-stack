@@ -1,0 +1,11 @@
+version: '2'
+services:
+  test:
+    image: app
+    command: bash -c "yarn test"
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./app:/app
+    links:
+      - postgres

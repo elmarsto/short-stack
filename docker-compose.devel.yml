@@ -1,0 +1,16 @@
+version: '2'
+services:
+  postgres:
+    ports:
+      - 54320:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+  app:
+    ports:
+      - 9000:9000
+    command: bash -c "yarn devel:docker-up"
+    environment:
+      - NODE_ENV=development
+      - SSH_AUTH_SOCK=/tmp/ssh-agent
+    volumes:
+      - "${SSH_AUTH_SOCK}:/tmp/ssh-agent"
