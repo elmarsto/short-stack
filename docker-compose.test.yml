@@ -2,7 +2,7 @@ version: '2'
 services:
   test:
     image: app
-    command: bash -c "yarn docker:test"
+    command: docker:test
     environment:
       - NODE_ENV=test
     volumes:

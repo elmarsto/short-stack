@@ -8,7 +8,7 @@ services:
   app:
     ports:
       - 8000:8000
-    command: bash -c "yarn docker:dev:start"
+    command: docker:dev:start
     environment:
       - NODE_ENV=development
       - SSH_AUTH_SOCK=/tmp/ssh-agent
