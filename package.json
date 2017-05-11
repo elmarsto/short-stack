@@ -1,8 +1,8 @@
 {
-  "name": "js-stack-from-scratch",
-  "version": "2.4.5",
-  "repository": "verekia/js-stack-boilerplate",
-  "author": "Jonathan Verrecchia - @verekia",
+  "name": "boileroom",
+  "version": "0.0.1",
+  "repository": "liz-mars/boileroom",
+  "author": "Liz Mars - @liz-mars",
   "license": "MIT",
   "browserslist": ["> 1%"],
   "engines": {
