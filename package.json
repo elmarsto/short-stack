@@ -4,7 +4,9 @@
   "repository": "liz-mars/boileroom",
   "author": "Liz Mars - @liz-mars",
   "license": "MIT",
-  "browserslist": ["> 1%"],
+  "browserslist": [
+    "> 1%"
+  ],
   "engines": {
     "node": "7.x",
     "yarn": "0.20.3"
@@ -14,12 +16,15 @@
     "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
     "dev:wds": "webpack-dev-server --progress",
     "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
-    "prod:start": "heroku local",
+    "prod:heroku": "heroku local",
     "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
     "test": "yarn lint && flow && jest --coverage",
     "heroku-postbuild": "yarn prod:build",
     "precommit": "yarn test",
-    "prepush": "yarn test && yarn prod:build"
+    "prepush": "yarn test && yarn prod:build",
+    "docker:prod:start": "yarn prod:build && cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
+    "docker:dev:start": "yarn dev:wds & yarn dev:start",
+    "docker:test": "yarn test"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
@@ -55,7 +60,7 @@
     "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.23.0",
     "coveralls": "^2.12.0",
-    "cross-env": "^3.2.3",
+    "cross-env": "^4.0.0",
     "eslint": "^3.17.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-compat": "^1.0.2",
@@ -68,6 +73,7 @@
     "husky": "^0.13.2",
     "jest": "^19.0.2",
     "nodemon": "^1.11.0",
+    "pm2": "^2.4.6",
     "redux-mock-store": "^1.2.2",
     "rimraf": "^2.6.1",
     "webpack": "^2.2.1",

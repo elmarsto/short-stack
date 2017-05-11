@@ -1,0 +1,27 @@
+version: '2'
+services:
+  postgres:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_HOST: postgres
+    expose:
+      - "5432"
+    volumes:
+      - ./var/lib/postgresql:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+    image: app
+    entrypoint: /app/tools/entrypoint
+    volumes:
+      - ./:/app
+      - ./var/tmp:/tmp #used by Flow for caching
+    links:
+      - postgres
+    environment:
+      VOLUME: /app
+      DOCKER_USER: daemon
+      DOCKER_GROUP: daemon
+      HOST_USER_ID: ${UID}
+      HOST_GROUP_ID: ${UID}

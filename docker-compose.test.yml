@@ -1,0 +1,11 @@
+version: '2'
+services:
+  test:
+    image: app
+    command: docker:test
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./:/app
+    links:
+      - postgres
