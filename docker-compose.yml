@@ -4,6 +4,7 @@ services:
     image: postgres:9.6
     environment:
       POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
       POSTGRES_HOST: postgres
     expose:
       - "5432"
