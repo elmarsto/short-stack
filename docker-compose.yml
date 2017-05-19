@@ -16,7 +16,6 @@ services:
     entrypoint: /app/tools/entrypoint
     volumes:
       - ./:/app
-      - ./var/tmp:/tmp #used by Flow for caching
     links:
       - postgres
     environment:
