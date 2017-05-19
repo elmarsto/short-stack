@@ -1,22 +1,29 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:flowtype/recommended"
-  ],
-  "plugins": [
-    "flowtype",
-    "compat"
-  ],
-  "env": {
-    "browser": true,
-    "jest": true
-  },
-  "settings": {
-    "polyfills": ["fetch"]
-  },
-  "rules": {
-    "semi": [2, "never"],
-    "no-unexpected-multiline": 2,
-    "compat/compat": 2
-  }
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "extends": [
+      "airbnb",
+      "plugin:flowtype/recommended"
+    ],
+    "plugins": [
+      "flowtype",
+      "compat"
+    ],
+    "rules": {
+      "semi": [2, "never"],
+      "no-unexpected-multiline": 2,
+      "compat/compat": 2
+    },
+    "env": {
+       "browser": true,
+       "jest": true
+    },
+    "settings": {
+      "polyfills": ["fetch"]
+    }
 }

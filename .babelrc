@@ -1,10 +1,14 @@
 {
-  "presets": [
-    "env",
-    "flow",
-    "react"
+  'presets': [
+    'latest',
+    'env',
+    'flow',
+    'react'
   ],
-  "plugins": [
-    "flow-react-proptypes"
+  'plugins': [
+    'flow-react-proptypes',
+    'transform-class-properties',
+    'transform-object-rest-spread',
+    'transform-decorators'
   ]
 }
