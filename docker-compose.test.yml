@@ -1,6 +1,6 @@
 version: '2'
 services:
   app:
-    command: docker:test
+    command: yarn docker:test
     environment:
       - NODE_ENV=test

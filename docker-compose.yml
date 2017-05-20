@@ -4,18 +4,20 @@ services:
     image: postgres:9.6
     environment:
       POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
       POSTGRES_HOST: postgres
     expose:
       - "5432"
     volumes:
-      - ./var/lib/postgresql:/var/lib/postgresql/data
+      - ./var/lib/postgresql:/var/lib/postgresql/
   app:
     build:
       context: .
     image: app
-    entrypoint: /app/tools/entrypoint
+    entrypoint: /tools/entrypoint
     volumes:
       - ./:/app
+      - ./tools:/tools
     links:
       - postgres
     environment:
