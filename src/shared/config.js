@@ -1,6 +1,6 @@
 // @flow
 
-export const POSTGRES_URI = 'postgres://postgres:postgres@postgres/'
+export const POSTGRES_URI = 'postgres://postgres:postgres@postgres/postgres'
 export const WEB_PORT = process.env.PORT || 8000
 export const WDS_PORT = 7000
 export const STATIC_PATH = '/static'

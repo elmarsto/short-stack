@@ -24,7 +24,7 @@
     "precommit": "yarn darn docker:test",
     "prepush": "yarn darn docker:prepush",
     "docker:prod:start": "yarn prod:build && yarn prod:start",
-    "docker:dev:start": "yarn dev:wds & yarn dev:start",
+    "docker:dev:start": "yarn dev:wds & sleep 5 && yarn dev:start",
     "docker:test": "yarn test",
     "docker:prepush": "yarn test && yarn prod:build",
     "darn": "docker-compose -f docker-compose.yml -f docker-compose.test.yml run app",
