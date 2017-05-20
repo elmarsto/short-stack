@@ -3,8 +3,8 @@ set -e
 
 
 echo "Setting permissions for the docker container..."
-/app/tools/permission_fix || true
+/tools/permission_fix || true
 chown -R $DOCKER_USER:$DOCKER_GROUP $VOLUME || true
 echo "Done."
 
-yarn $*
+bash -xc "$*"

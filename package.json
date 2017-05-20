@@ -27,7 +27,8 @@
     "docker:dev:start": "yarn dev:wds & yarn dev:start",
     "docker:test": "yarn test",
     "docker:prepush": "yarn test && yarn prod:build",
-    "darn": "docker-compose -f docker-compose.yml -f docker-compose.test.yml run app"
+    "darn": "docker-compose -f docker-compose.yml -f docker-compose.test.yml run app",
+    "shell": "bash"
   },
   "dependencies": {
     "babel-polyfill": "^6.23.0",
