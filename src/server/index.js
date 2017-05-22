@@ -7,7 +7,7 @@ import socketIO from 'socket.io'
 import postgraphql from 'postgraphql'
 
 import routing from './routing'
-import { GRAPHQL_PATH, WEB_PORT, STATIC_PATH, POSTGRES_URI } from '../shared/config'
+import { WEB_PORT, STATIC_PATH, POSTGRES_URI } from '../shared/config'
 import { isProd } from '../shared/util'
 import setUpSocket from './socket'
 
@@ -18,7 +18,7 @@ const io = socketIO(http)
 setUpSocket(io)
 
 app.use(compression())
-app.use(GRAPHQL_PATH, postgraphql(POSTGRES_URI))
+app.use(postgraphql(POSTGRES_URI, 'public', { graphiql: true, watchPg: true }))
 app.use(STATIC_PATH, express.static('dist'))
 app.use(STATIC_PATH, express.static('public'))
 

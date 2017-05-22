@@ -6,8 +6,8 @@ import Immutable from 'immutable'
 import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { ApolloClient, ApolloProvider } from 'react-apollo'
 import { AppContainer } from 'react-hot-loader'
-import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
@@ -27,24 +27,25 @@ require('bootstrap')
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
+const apolloClient = new ApolloClient()
 
 const store = createStore(combineReducers(
-  { hello: helloReducer }),
+  { hello: helloReducer, apollo: apolloClient.reducer() }),
   { hello: Immutable.fromJS(preloadedState.hello) },
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 
-const wrapApp = (AppComponent, reduxStore) =>
-  <Provider store={reduxStore}>
+const wrapApp = (AppComponent, client) =>
+  <ApolloProvider client={client}>
     <BrowserRouter>
       <AppContainer>
         <AppComponent />
       </AppContainer>
     </BrowserRouter>
-  </Provider>
+  </ApolloProvider>
 
-ReactDOM.render(wrapApp(App, store), rootEl)
+ReactDOM.render(wrapApp(App, apolloClient), rootEl)
 
 if (module.hot) {
   // flow-disable-next-line

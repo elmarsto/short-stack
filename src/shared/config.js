@@ -1,10 +1,21 @@
 // @flow
+import { gql } from 'react-apollo'
 
-export const POSTGRES_URI = 'postgres://postgres:postgres@postgres/postgres'
+export const POSTGRES_URI = 'postgres://postgres:postgres@postgres:5432/postgres'
 export const WEB_PORT = process.env.PORT || 8000
 export const WDS_PORT = 7000
 export const STATIC_PATH = '/static'
 export const GRAPHQL_PATH = '/graphql'
+export const GRAPHQL_TESTQUERY = gql`{
+  allPosts {
+    edges {
+      node {
+        id
+        headline
+      }
+    }
+  }
+}`
 
 export const APP_NAME = 'Hello App'
 
