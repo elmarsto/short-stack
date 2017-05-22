@@ -7,3 +7,4 @@ node_modules/
 /var/
 # Heroku (remove if you're using the no-service boilerplate)
 /.env
+/public/graphql-schema.*

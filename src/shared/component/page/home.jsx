@@ -5,6 +5,8 @@ import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 
 import ModalExample from '../modal-example'
+import Forum from '../../container/forum'
+
 import { APP_NAME } from '../../config'
 
 const styles = {
@@ -32,9 +34,9 @@ const HomePage = ({ classes }: { classes: Object }) =>
         { property: 'og:title', content: APP_NAME },
       ]}
     />
-    <div className="jumbotron">
+    <div >
       <div className="container">
-        <h1 className="display-3 mb-4">{APP_NAME}</h1>
+        <Forum />
       </div>
     </div>
     <div className="container">
