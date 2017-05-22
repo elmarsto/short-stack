@@ -20,10 +20,11 @@ export const GRAPHQL_TESTQUERY = gql`{
 
 
 export const PG_URI = 'postgres://postgres:postgres@postgres:5432/postgres'
+// from https://github.com/postgraphql/postgraphql/blob/master/examples/forum/TUTORIAL.md
 export const PG_SCHEMA = 'forum_example'
 export const PG_JWT_TYPE = `${PG_SCHEMA}.jwt_token`
 export const PG_DEFAULT_ROLE = `${PG_SCHEMA}_anonymous`
-export const SSTK_SECRET = (isProd) ? process.env.SSTK_SECRET : 'S6tiex5eech6laeghie6ohdavohthi9ui6iophoreenu9SoiCahWei8aeyefaed'
+export const SSTK_SECRET = (isProd) ? process.env.SSTK_SECRET : 'keyboard_kitten'
 export const PGQL_OPT = {
   graphiql: !isProd,
   graphqlRoute: GRAPHQL_PATH,

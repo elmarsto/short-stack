@@ -1,3 +1,5 @@
+# This is from github.com/postgraphql/postgraphql/examples/forum, May 22 2017
+
 # PostGraphQL Forum Example
 This directory contains an example PostgreSQL schema which will work with PostGraphQL. The schema used is contained in the `schema.sql` file and some sample data is contained in the `data.sql` file. A comprehensive tutorial on the decisions made in creating that schema may be found in `tutorial.md`.
 
