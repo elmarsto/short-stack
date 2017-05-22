@@ -1,11 +1,12 @@
 // @flow
 import { gql } from 'react-apollo'
+import { isProd } from './util'
 
-export const POSTGRES_URI = 'postgres://postgres:postgres@postgres:5432/postgres'
 export const WEB_PORT = process.env.PORT || 8000
 export const WDS_PORT = 7000
 export const STATIC_PATH = '/static'
 export const GRAPHQL_PATH = '/graphql'
+export const GRAPHIQL_PATH = '/graphiql'
 export const GRAPHQL_TESTQUERY = gql`{
   allPosts {
     edges {
@@ -16,6 +17,33 @@ export const GRAPHQL_TESTQUERY = gql`{
     }
   }
 }`
+
+
+export const PG_URI = 'postgres://postgres:postgres@postgres:5432/postgres'
+export const PG_SCHEMA = 'forum_example'
+export const PG_JWT_TYPE = `${PG_SCHEMA}.jwt_token`
+export const PG_DEFAULT_ROLE = `${PG_SCHEMA}_anonymous`
+export const SSTK_SECRET = (isProd) ? process.env.SSTK_SECRET : 'S6tiex5eech6laeghie6ohdavohthi9ui6iophoreenu9SoiCahWei8aeyefaed'
+export const PGQL_OPT = {
+  graphiql: !isProd,
+  graphqlRoute: GRAPHQL_PATH,
+  graphiqlRoute: GRAPHIQL_PATH,
+  jwtAudiences: ['sstk'],
+  jwtSecret: SSTK_SECRET,
+  jwtPgTypeIdentifier: PG_JWT_TYPE,
+  disableQueryLog: isProd,
+  pgDefaultRole: PG_DEFAULT_ROLE,
+  watchPg: !isProd,
+  exportJsonSchemaPath: './public/graphql-schema.json',
+  exportGqlSchemaPath: './public/graphql-schema.gql',
+}
+
+export const PGQL_CFG =
+  [
+    PG_URI,
+    PG_SCHEMA,
+    PGQL_OPT,
+  ]
 
 export const APP_NAME = 'Hello App'
 

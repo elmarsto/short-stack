@@ -6,7 +6,7 @@ import Immutable from 'immutable'
 import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ApolloClient, ApolloProvider } from 'react-apollo'
+import { ApolloProvider } from 'react-apollo'
 import { AppContainer } from 'react-hot-loader'
 import { BrowserRouter } from 'react-router-dom'
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
@@ -18,6 +18,7 @@ import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import helloReducer from '../shared/reducer/hello'
 import { isProd } from '../shared/util'
 import setUpSocket from './socket'
+import { apolloClient } from '../shared/apollo'
 
 window.jQuery = $
 window.Tether = Tether
@@ -27,7 +28,6 @@ require('bootstrap')
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
 const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
-const apolloClient = new ApolloClient()
 
 const store = createStore(combineReducers(
   { hello: helloReducer, apollo: apolloClient.reducer() }),

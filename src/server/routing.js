@@ -1,5 +1,7 @@
 // @flow
 
+import postgraphql from 'postgraphql'
+
 import {
   homePage,
   helloPage,
@@ -11,8 +13,12 @@ import {
   HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
+  GRAPHQL_ROUTE,
+  GRAPHIQL_ROUTE,
   helloEndpointRoute,
 } from '../shared/routes'
+
+import { PGQL_CFG } from '../shared/config'
 
 import renderApp from './render-app'
 
@@ -37,10 +43,12 @@ export default (app: Object) => {
     throw Error('Fake Internal Server Error')
   })
 
+  app.post(GRAPHQL_ROUTE, postgraphql(...PGQL_CFG))
+  app.post(GRAPHIQL_ROUTE, postgraphql(...PGQL_CFG))
+
   app.get('*', (req, res) => {
     res.status(404).send(renderApp(req.url))
   })
-
   // eslint-disable-next-line no-unused-vars
   app.use((err, req, res, next) => {
     // eslint-disable-next-line no-console
