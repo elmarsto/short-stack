@@ -14,7 +14,7 @@
   "scripts": {
     "start": "yarn dev:start",
     "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
-    "dev:wds": "webpack-dev-server --progress",
+    "dev:wds": "webpack-dev-server --progress --host 0.0.0.0 ",
     "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
     "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
     "prod:stop": "pm2 delete server",
@@ -30,7 +30,7 @@
     "schema:init": "yarn schema:drop > /dev/null 2>&1; yarn schema:load && yarn data:load",
     "docker:init": "yarn darn schema:init",
     "docker:prod:start": "yarn prod:build && yarn prod:start",
-    "docker:dev:start": "yarn dev:wds & sleep 5 && yarn dev:start",
+    "docker:dev:start": "parallel -j 2 -- 'yarn dev:wds'  'yarn dev:start' --color -w",
     "docker:test": "yarn test",
     "docker:prepush": "yarn test && yarn prod:build",
     "darn": "docker-compose -f docker-compose.yml -f docker-compose.test.yml run app yarn",

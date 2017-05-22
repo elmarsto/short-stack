@@ -19,8 +19,8 @@ export const GRAPHQL_TESTQUERY = gql`{
 }`
 
 
-export const PG_URI = 'postgres://postgres:postgres@postgres:5432/postgres'
 // from https://github.com/postgraphql/postgraphql/blob/master/examples/forum/TUTORIAL.md
+export const PG_URI = 'postgres://forum_example_postgraphql:xyz@postgres:5432/postgres'
 export const PG_SCHEMA = 'forum_example'
 export const PG_JWT_TYPE = `${PG_SCHEMA}.jwt_token`
 export const PG_DEFAULT_ROLE = `${PG_SCHEMA}_anonymous`
