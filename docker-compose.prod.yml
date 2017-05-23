@@ -2,15 +2,13 @@ version: '2'
 services:
   postgres:
     ports:
-      - 54320:5432
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${SSTK_SECRET}
   app:
     ports:
       - 80:8000
     command: yarn docker:prod:start
     environment:
-      - NODE_ENV=production
-      - SSH_AUTH_SOCK=/tmp/ssh-agent
-    volumes:
-      - "${SSH_AUTH_SOCK}:/tmp/ssh-agent"
+      NODE_ENV: production
+      POSTGRES_PASSWORD: ${SSTK_SECRET}
+      SSTK_SECRET: ${SSTK_SECRET}
