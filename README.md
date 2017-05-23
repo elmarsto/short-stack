@@ -13,8 +13,30 @@ This is a web application stack based on Docker, Apollo, Postgraphql, and Vereki
 Status
 ------
 
-Raw, raw pre-alpha. But I'm aiming for a professional-grade stack suitable for use in production in the Real World. Stay tuned.
+Raw, raw pre-alpha. *DO NOT USE THIS FOR ANYTHING JUST YET.*  But I'm aiming for a professional-grade stack suitable for use in production in the Real World. Stay tuned.
 
+
+Requirements
+------------
+
+Docker 1.9 or so. A working `node` install, and `yarn`, both strongly recommended, but not required, because Docker.  
+
+
+Quick Start
+-----------
+
+Installation:
+ - `git clone https://github.com/liz-mars/short-stack.git`
+ - `cd short-stack`
+ - `docker-compose run app yarn firstrun`
+
+Do The Thing (development mode):
+ - `docker-compose up`
+
+
+You get Express at localhost:8000 Webpack with Hot Module Reload running on :7000, and Postgres (for inspection, etc.) at :54320
+
+Production mode is still under development. 
 
 
 TODO
