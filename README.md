@@ -4,6 +4,8 @@
 Short Stack
 ===========
 
+<img style="float:left;" src="https://github.com/liz-mars/short-stack/raw/master/public/short-stack.png"/>
+
 This is a web application stack based on Docker, Apollo, Postgraphql, and Verekia's fabulous 'JS Boilerplate', which in turn drags in a fabulous panoply of other critical development libraries (React! Bootstrap 4! Jest, Eslint, Flow, etc!!) . The value proposition is: get rid of (nearly all of) your server-side logic. Use Express to serve the single page app (and do SSR), and have the app just call up the Postgres DB directly via Apollo/GraphQL. Host your work cheaply on AWS ECS with a single command. This results in low TOC and keeps the focus on your front end development experience (less context-switching).
 
  - *Tired*: Not putting your business logic in your database; putting it in Rails or similar; worrying about hosting or PaaS fees
